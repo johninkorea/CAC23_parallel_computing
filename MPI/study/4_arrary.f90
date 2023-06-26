@@ -14,7 +14,7 @@ program array_operations
 
     ! 2차원 배열 출력
     write(*,*) "2D Matrix:"
-    do i = 1, 3
+    do i =[1, 3]
         write(*,*) matrix(i, :)
     end do
 
