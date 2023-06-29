@@ -1,12 +1,12 @@
 from mpi4py import MPI
-import datetime
+import timeit
 # Define your function here
 # You can modify this function according to your specific requirements
 def f(x):
     return x**2 - 3*x + 2
 
 if __name__ == "__main__":
-    start_time = datetime.datetime.now()
+    start_time = timeit.default_timer()
     
     # Initialize MPI
     comm = MPI.COMM_WORLD
@@ -41,11 +41,15 @@ if __name__ == "__main__":
     """
     # Finalize MPI
     MPI.Finalize()
-    end_time = datetime.datetime.now()
+
+    end_time = timeit.default_timer()
+    
+
 
     if rank == 0:
-        elapsed_time = end_time - start_time
-        ms_elapsed_time = elapsed_time.microseconds
-
-        print(ms_elapsed_time)
+        elapsed_time = round((end_time - start_time) * 10 ** 6, 3) # end_time - start_time
+        #ms_elapsed_time = round((t_1 - t_0) * 10 ** 6, 3) # elapsed_time.microseconds
+    
+        #print(ms_elapsed_time)
+        print(f"{elapsed_time}")
 

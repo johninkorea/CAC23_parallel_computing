@@ -1,7 +1,8 @@
-#include <iostream>
+
 #include <cmath>
 #include <mpi.h>
 #include <chrono>
+#include <cstdio>
 
 using namespace std;
 using namespace chrono;
@@ -65,7 +66,7 @@ int main(int argc, char* argv[]) {
         //int ns_elapsed = (int_nanosec % ms_unit) %us_unit;
 
         // cout << "Elapsed Time : " << ms_elapsed << "ms " << us_elapsed << "us " << ns_elapsed << "ns" << endl;
-        cout << int_nanosec / 1000 << endl;
+        printf("%d\n",nano.count() / 1000);
         delete[] allResults;
     }
 

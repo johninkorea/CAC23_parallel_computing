@@ -1,6 +1,5 @@
 #import numpy as np
-import datetime
-start_time = datetime.datetime.now()
+import timeit
 
 # def f(x):
 #     #d, w0 = 1.5, 15
@@ -14,22 +13,34 @@ start_time = datetime.datetime.now()
 #     y = np.pow(x, 2) - 3 * x + 2
 #     return y
 
-def f(x):
-    return x**2 - 3*x + 2
+
 
 # Calculate and print f(x) for 0 < x < 4
-start = 0.0
-end = 10000.0
-step = 0.001
+if __name__=="__main__":
+    def f(x):
+        return x**2 - 3*x + 2
+    start_time = timeit.default_timer() #datetime.datetime.now()
+    #rnd = random.randint(0,1) / 1000
+    start = 0.0
+    end = 10000.0
+    step = 0.001
+    #start = 0.0
+    #end = 10000.0
+    #step = 0.001
+    
+    x = start
+    while x < end:
+        result = f(x)
+        #print("f({:.2f}) = {:.2f}".format(x, result))
+        #print(result)
+        x += step
+    end_time = timeit.default_timer()
+    
+    elapsed_time = round((end_time - start_time) * 10 ** 6, 3) # end_time - start_time
+    #ms_elapsed_time = round((t_1 - t_0) * 10 ** 6, 3) # elapsed_time.microseconds
+    
+    #print(ms_elapsed_time)
+    print(f"{elapsed_time}")
 
-x = start
-while x < end:
-    result = f(x)
-    #print("f({:.2f}) = {:.2f}".format(x, result))
-    x += step
-end_time = datetime.datetime.now()
 
-elapsed_time = end_time - start_time
-ms_elapsed_time = elapsed_time.microseconds
-
-print(ms_elapsed_time)
+    
