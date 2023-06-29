@@ -159,15 +159,15 @@ for i in range(1, EPOCHS+1) :
               %(i, EPOCHS,  history_MSE_real[-1], history_MSE_obs[-1], mu.item(), k.item()))
         yh = model(t_grid.to(device)).detach()
         # print(yh)
-        xp = t_grid.T
+        # xp = t_grid.T
         
         file = "plots/pinn_%.8i.png"%(i)
         files.append(file)
         # print(t_grid.cpu().detach().numpy().T)
-        a=t_grid.cpu().detach().numpy().T
-        b=x_grid.cpu().detach().numpy().T
-        c=t_obs.cpu().detach().numpy().T
-        d=x_obs.cpu().detach().numpy().T
+        a=t_grid.cpu().detach().numpy()
+        b=x_grid.cpu().detach().numpy()#.T
+        c=t_obs.cpu().detach().numpy()#.T
+        d=x_obs.cpu().detach().numpy()#.T
         e=yh.cpu().detach().numpy()
 
         plot_result(a,b,c,d,e,x_physics.cpu().detach().numpy().T)
@@ -183,54 +183,54 @@ save_gif_PIL("result/6_pinn_in_noise.gif", files, fps=20, loop=0)
 
 
 
-# # View data
-# figure = plt.figure(figsize=(5,3))
-# plt.plot(t_grid.cpu().detach(), x_grid.cpu().detach(), color='k', linestyle='--', label='True $x(t)$')
-# # plt.plot(t_grid.cpu().detach(), best_model(t_grid).cpu().detach(), color='r', label='PINN $x(t)$') # For best model
-# plt.plot(t_grid.cpu().detach(), model(t_grid).cpu().detach(), color='r', label='PINN $x(t)$')        # For final model
-# plt.scatter(t_obs.cpu().detach(), x_obs.cpu().detach(), marker='o',label='Observed $x(t)$')
-# plt.legend(fontsize=8)
-# plt.savefig('x_vs_t.png', dpi=300)
+# View data
+figure = plt.figure(figsize=(5,3))
+plt.plot(t_grid.cpu().detach(), x_grid.cpu().detach(), color='k', linestyle='--', label='True $x(t)$')
+# plt.plot(t_grid.cpu().detach(), best_model(t_grid).cpu().detach(), color='r', label='PINN $x(t)$') # For best model
+plt.plot(t_grid.cpu().detach(), model(t_grid).cpu().detach(), color='r', label='PINN $x(t)$')        # For final model
+plt.scatter(t_obs.cpu().detach(), x_obs.cpu().detach(), marker='o',label='Observed $x(t)$')
+plt.legend(fontsize=8)
+plt.savefig('x_vs_t.png', dpi=300)
 
-# figure = plt.figure(figsize=(15,5))
-# ax1 = figure.add_subplot(1,2,1)
-# ax1.set_yscale('log')
-# ax1.plot(history_MSE_real)
-# ax1.set_title('MSELoss btw PINN and Real Solution')
-# ax1.set_xlabel('epoch')
+figure = plt.figure(figsize=(15,5))
+ax1 = figure.add_subplot(1,2,1)
+ax1.set_yscale('log')
+ax1.plot(history_MSE_real)
+ax1.set_title('MSELoss btw PINN and Real Solution')
+ax1.set_xlabel('epoch')
 
-# ax2 = figure.add_subplot(1,2,2)
-# ax2.set_yscale('log')
-# ax2.plot(history_MSE_obs)
-# ax2.set_title('MSELoss btw PINN and Observed Data')
-# ax2.set_xlabel('epoch')
-# plt.savefig('MSE_loss.png', dpi=300)
+ax2 = figure.add_subplot(1,2,2)
+ax2.set_yscale('log')
+ax2.plot(history_MSE_obs)
+ax2.set_title('MSELoss btw PINN and Observed Data')
+ax2.set_xlabel('epoch')
+plt.savefig('MSE_loss.png', dpi=300)
 
-# figure = plt.figure(figsize=(15,5))
-# ax1 = figure.add_subplot(1,3,1)
-# ax1.plot(history_mu)
-# ax1.set_title('$\mu$')
-# ax1.set_xlabel('epoch')
-# ax1.hlines(mu_real, 0, EPOCHS, color='k',linestyle='--', label='True $\mu$')
-# # ax1.hlines(best_mu, 0, EPOCHS, color='r', label='Best $\mu$') # For best model
-# ax1.legend()
-
-
-# ax2 = figure.add_subplot(1,3,2)
-# ax2.plot(history_k)
-# ax2.set_title('k')
-# ax2.set_xlabel('epoch')
-# ax2.hlines(k_real, 0, EPOCHS, color='k', linestyle='--', label='True k')
-# # ax2.hlines(best_k, 0, EPOCHS, color='r', label='Best k') # For best model
-# ax2.legend()
+figure = plt.figure(figsize=(15,5))
+ax1 = figure.add_subplot(1,3,1)
+ax1.plot(history_mu)
+ax1.set_title('$\mu$')
+ax1.set_xlabel('epoch')
+ax1.hlines(mu_real, 0, EPOCHS, color='k',linestyle='--', label='True $\mu$')
+# ax1.hlines(best_mu, 0, EPOCHS, color='r', label='Best $\mu$') # For best model
+ax1.legend()
 
 
-# ax3 = figure.add_subplot(1,3,3)
-# ax3.plot(history_loss, label='Training Loss')
-# ax3.set_yscale('log')
-# ax3.legend()
-# ax3.set_title('Training Loss in log scale', fontsize=13)
-# ax3.set_xlabel('epoch', fontsize=13)
-# plt.savefig('mu_k_loss.png', dpi=300)
+ax2 = figure.add_subplot(1,3,2)
+ax2.plot(history_k)
+ax2.set_title('k')
+ax2.set_xlabel('epoch')
+ax2.hlines(k_real, 0, EPOCHS, color='k', linestyle='--', label='True k')
+# ax2.hlines(best_k, 0, EPOCHS, color='r', label='Best k') # For best model
+ax2.legend()
+
+
+ax3 = figure.add_subplot(1,3,3)
+ax3.plot(history_loss, label='Training Loss')
+ax3.set_yscale('log')
+ax3.legend()
+ax3.set_title('Training Loss in log scale', fontsize=13)
+ax3.set_xlabel('epoch', fontsize=13)
+plt.savefig('mu_k_loss.png', dpi=300)
 
 
