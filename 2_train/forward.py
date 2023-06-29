@@ -10,7 +10,7 @@ def plot_result(x,y,x_data,y_data,yh,xp=None):
     plt.plot(x,y, color="gray", linewidth=2, alpha=0.8, label="Exact solution")
     
     plt.scatter(xp.cpu(), oscillator(1.5, 15, xp.cpu()), marker="^", color="black", label='gradint points')
-    plt.scatter(x_data.cpu(), y_data.cpu(), marker="s", color="g", label='Training data')
+    # plt.scatter(x_data.cpu(), y_data.cpu(), marker="s", color="g", label='Training data')
     plt.scatter(0, 1, s=50, marker="*", c='r', label="init")
     
     plt.plot(x,yh.cpu(), color="tab:blue", linewidth=3, alpha=0.8, label="Neural network prediction")
@@ -158,7 +158,7 @@ for i in range(number_of_epoch):
         # if (i+1) % 6000 == 0: plt.show()
         # else: plt.close("all")
 if gif == True:
-    save_gif_PIL("result/pinn_fo2.gif", files, fps=20, loop=0)
+    save_gif_PIL("result/pinn_fo.gif", files, fps=20, loop=0)
 
 
 
