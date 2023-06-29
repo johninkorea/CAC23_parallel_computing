@@ -1,5 +1,10 @@
 #include <iostream>
 #include <cmath>
+#include <chrono>
+
+using namespace std;
+using namespace chrono;
+using std::cout; using std::endl;
 
 __device__ double f(double x) {
     return pow(x, 2) - 3 * x + 2;
@@ -12,6 +17,8 @@ __global__ void calculateFunction(double start, double step, double *results) {
 }
 
 int main() {
+    system_clock::time_point start_time = system_clock::now();
+    
     double start = 0.0;
     double end = 10000.0;
     double step = 0.001;
@@ -29,8 +36,10 @@ int main() {
     cudaMemcpyToSymbol(step, &step, sizeof(double));
 
     // Launch kernel
-    int blockSize = 256;
-    int gridSize = (numSteps + blockSize - 1) / blockSize;
+    // int blockSize = 256;
+    int blockSize = 50000;
+    // int gridSize = (numSteps + blockSize - 1) / blockSize;
+    int gridSize = 200;
     calculateFunction<<<gridSize, blockSize>>>(start, step, deviceResults);
 
     // Copy results back from device to host
@@ -45,7 +54,10 @@ int main() {
     // Clean up
     delete[] hostResults;
     cudaFree(deviceResults);
-
+    
+    system_clock::time_point end_time = system_clock::now();
+    nanoseconds nano = end_time - start_time;
+    cout << nano.count() / 1000 << endl;
     return 0;
 }
 
