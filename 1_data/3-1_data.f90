@@ -7,7 +7,7 @@ program data_generator
   
   call cpu_time(start_time)
   start_ = 0.0
-  end_ = 100.0
+  end_ = 10000.0
   step_ = 0.001
   ! 설정값
   !n = INT((end_ - start_)/step_)  ! 구간을 몇 등분할 것인지 결정

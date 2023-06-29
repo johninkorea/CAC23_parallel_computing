@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
     double start = 0.0;
-    double end = 100.0;
+    double end = 10000.0;
     double step = 0.001;
     int numSteps = static_cast<int>((end - start) / (step * size));
 
@@ -58,13 +58,14 @@ int main(int argc, char* argv[]) {
         system_clock::time_point end_time = system_clock::now();
         nanoseconds nano = end_time - start_time;
         int int_nanosec = nano.count();
-        int ms_unit = int(pow(10, 6));
-        int us_unit = int(pow(10, 3));
-        int ms_elapsed = int_nanosec / ms_unit;
-        int us_elapsed = (int_nanosec % ms_unit) /us_unit;
-        int ns_elapsed = (int_nanosec % ms_unit) %us_unit;
+        //int ms_unit = int(pow(10, 6));
+        //int us_unit = int(pow(10, 3));
+        //int ms_elapsed = int_nanosec / ms_unit;
+        //int us_elapsed = (int_nanosec % ms_unit) /us_unit;
+        //int ns_elapsed = (int_nanosec % ms_unit) %us_unit;
 
-        cout << "Elapsed Time : " << ms_elapsed << "ms " << us_elapsed << "us " << ns_elapsed << "ns" << endl;
+        // cout << "Elapsed Time : " << ms_elapsed << "ms " << us_elapsed << "us " << ns_elapsed << "ns" << endl;
+        cout << int_nanosec << endl;
         delete[] allResults;
     }
 

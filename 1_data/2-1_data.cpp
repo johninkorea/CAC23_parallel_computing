@@ -19,7 +19,7 @@ int main() {
     system_clock::time_point start_time = system_clock::now();
 
     double sta = 0.0;
-    double end = 100.0;
+    double end = 10000.0;
     double step = 0.001;
 
     for (double x = sta; x < end; x += step) {

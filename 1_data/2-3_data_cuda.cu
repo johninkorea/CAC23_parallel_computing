@@ -13,8 +13,8 @@ __global__ void calculateFunction(double start, double step, double *results) {
 
 int main() {
     double start = 0.0;
-    double end = 4.0;
-    double step = 0.1;
+    double end = 10000.0;
+    double step = 0.001;
     int numSteps = static_cast<int>((end - start) / step);
 
     // Allocate memory on the host
