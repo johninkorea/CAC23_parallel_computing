@@ -55,11 +55,17 @@ ys = np.random.multivariate_normal(m_fun, k_fun, gp_sample_n)
 
 # plt.scatter(tr_xs, tr_ys, s=1000)
 for i in range(gp_sample_n):
-    plt.plot(xs.T[0], ys[i], alpha=.08, c='k')
+    plt.plot(xs.T[0], ys[i], alpha=.1, c='k')
 plt.plot(xs.T[0], np.mean(ys, axis=0), c='r', linewidth=2, alpha=.5, label='mean')
 plt.plot(x.cpu(), y.cpu(), c='b', linewidth=2, alpha=.5, label='solution')
-plt.scatter(tr_xs, tr_ys, s=20, c='r', zorder=5)
+plt.scatter(tr_xs, tr_ys, s=20, c='r', zorder=5, label='data')
+
+plt.xlabel("Time")
+plt.ylabel("Displacement")
+
+plt.title(r"Bayesian (N=100, $\sigma$=0.1)")
+
 plt.legend()
-plt.savefig("result/bayesian", dpi=300)
+plt.savefig("bayesian", dpi=300)
 # plt.show()
 
