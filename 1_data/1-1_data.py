@@ -30,6 +30,6 @@ while x < end:
 end_time = datetime.datetime.now()
 
 elapsed_time = end_time - start_time
-ms_elapsed_time = elapsed_time.microseconds / 1000
+ms_elapsed_time = elapsed_time.microseconds
 
 print(ms_elapsed_time)

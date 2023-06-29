@@ -65,7 +65,7 @@ int main(int argc, char* argv[]) {
         //int ns_elapsed = (int_nanosec % ms_unit) %us_unit;
 
         // cout << "Elapsed Time : " << ms_elapsed << "ms " << us_elapsed << "us " << ns_elapsed << "ns" << endl;
-        cout << int_nanosec << endl;
+        cout << int_nanosec / 1000 << endl;
         delete[] allResults;
     }
 
