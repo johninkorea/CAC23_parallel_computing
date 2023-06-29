@@ -28,7 +28,7 @@ int main() {
     }
     system_clock::time_point end_time = system_clock::now();
     nanoseconds nano = end_time - start_time;
-    cout << "Elapsed Time (ns) : " << nano.count() << endl;
+    cout << nano.count() << endl;
     return 0;
 }
 
