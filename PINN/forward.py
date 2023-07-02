@@ -155,8 +155,6 @@ for i in range(number_of_epoch):
             plt.savefig(file, bbox_inches='tight', pad_inches=0.1, dpi=300, facecolor="white")
             plt.cla()
         
-        # if (i+1) % 6000 == 0: plt.show()
-        # else: plt.close("all")
 if gif == True:
     save_gif_PIL("result/pinn_fo.gif", files, fps=20, loop=0)
 
