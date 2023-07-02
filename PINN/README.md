@@ -1,4 +1,4 @@
-# CAC23_parallel_computing
+# Physics-Informed Neural Network
 
 In this folder, you can find the PINN code that solve the physics problem.
 
