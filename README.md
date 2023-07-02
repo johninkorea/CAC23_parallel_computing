@@ -1,11 +1,10 @@
 # CAC23_parallel_computing
 
-This Repository is the record of the project what we done in 14th KIAS CAC Summer School.
+This repository documents the project we worked on during the 14th KIAS CAC Summer School. We aimed to solve the [damped harmonic oscillator](https://beltoforion.de/en/harmonic_oscillator/) problem using various methodologies.
 
-We tried to solve the [damped harmonic oscillator](https://beltoforion.de/en/harmonic_oscillator/) problem with various methodologies.
 
-First, you can see the [MPI](https://github.com/johninkorea/CAC23_parallel_computing/tree/main/MPI) code in 1_MPI forder. this purpose create exact solution to plot and train the network.
+First, you can find the MPI code in the [MPI](https://github.com/johninkorea/CAC23_parallel_computing/tree/main/MPI) folder. The purpose of this code is to create an exact solution for plotting and training the network.
 
-Second, [PINN](https://github.com/johninkorea/CAC23_parallel_computing/tree/main/PINN) is the code with Physics-Informed Neural Network to solve the ODE equation.
+Second, the [PINN](https://github.com/johninkorea/CAC23_parallel_computing/tree/main/PINN) folder contains the code for Physics-Informed Neural Network (PINN) to solve the ODE equation.
 
-Last, I solve the same problem with the Bayesian Kernal and you can see the code in [Bayesian](https://github.com/johninkorea/CAC23_parallel_computing/tree/main/Bayesian) forder.
+Lastly, I tackled the same problem using the Bayesian Kernel, and you can find the code in the [Bayesian](https://github.com/johninkorea/CAC23_parallel_computing/tree/main/Bayesian) folder.
