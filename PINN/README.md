@@ -3,9 +3,9 @@
 In this folder, you can find the PINN code that solve the physics problem.
 
 
-forward.py : find the exact solution by train conditions.
+forward.py : find the exact solution by conditions.
 
-forward_ray.py : find the \alpha value as think it is a hyperparameter.
+forward_ray.py : find the $\alpha$ value as think it is a hyperparameter.
 
 inverse.py : find the exact solution and parameters using conditions + few data.
 
